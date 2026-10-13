@@ -118,7 +118,7 @@ public class AppointmentServlet extends HttpServlet {
                         request.getParameter("startTime")
                 );
 
-                AppointmentType type = com.example.clinicmanager.model.enums.AppointmentType.valueOf(
+                AppointmentType type = AppointmentType.valueOf(
                         request.getParameter("type")
                 );
 
