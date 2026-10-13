@@ -3,13 +3,12 @@ package com.example.clinicmanager.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
 @Table(name = "disponibilites")
 
-public class Disponiblity {
+public class Disponibility {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -30,10 +29,10 @@ public class Disponiblity {
     @Column(name = "valid_until")
     private LocalDate validUntil;
 
-    protected Disponiblity(){
+    protected Disponibility(){
     }
 
-    public Disponiblity(Doctor doctor, String dayOfWeek, LocalTime startTime, LocalTime endTime, LocalDate validFrom, LocalDate validUntil) {
+    public Disponibility(Doctor doctor, String dayOfWeek, LocalTime startTime, LocalTime endTime, LocalDate validFrom, LocalDate validUntil) {
         this.doctor = doctor;
         this.dayOfWeek = dayOfWeek;
         this.startTime = startTime;

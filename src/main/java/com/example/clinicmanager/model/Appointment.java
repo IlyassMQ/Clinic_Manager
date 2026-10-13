@@ -25,7 +25,7 @@ public class Appointment {
 
     @ManyToOne
     @JoinColumn (name = "disponibilites_id")
-    private Disponiblity disponiblity;
+    private Disponibility disponibility;
 
     @Column(name = "appointment_date")
     private LocalDate appointmentDate;
@@ -52,11 +52,11 @@ public class Appointment {
     protected Appointment(){
     }
 
-    public Appointment(UUID id, Patient patient, Doctor doctor, Disponiblity disponiblity, LocalDate appointmentDate, LocalTime startTime, LocalTime endTime, AppointmentType type, String reason, AppointmentStatus status, LocalDateTime createdAt) {
+    public Appointment(UUID id, Patient patient, Doctor doctor, Disponibility disponibility, LocalDate appointmentDate, LocalTime startTime, LocalTime endTime, AppointmentType type, String reason, AppointmentStatus status, LocalDateTime createdAt) {
         this.id = id;
         this.patient = patient;
         this.doctor = doctor;
-        this.disponiblity = disponiblity;
+        this.disponibility = disponibility;
         this.appointmentDate = appointmentDate;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -90,12 +90,12 @@ public class Appointment {
         this.doctor = doctor;
     }
 
-    public Disponiblity getDisponiblity() {
-        return disponiblity;
+    public Disponibility getDisponiblity() {
+        return disponibility;
     }
 
-    public void setDisponiblity(Disponiblity disponiblity) {
-        this.disponiblity = disponiblity;
+    public void setDisponiblity(Disponibility disponibility) {
+        this.disponibility = disponibility;
     }
 
     public LocalDate getAppointmentDate() {
