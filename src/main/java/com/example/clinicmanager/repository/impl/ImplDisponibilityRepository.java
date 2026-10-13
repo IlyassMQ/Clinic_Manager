@@ -1,6 +1,6 @@
 package com.example.clinicmanager.repository.impl;
 
-import com.example.clinicmanager.model.Disponiblity;
+import com.example.clinicmanager.model.Disponibility;
 import com.example.clinicmanager.repository.DisponibilityRepository;
 import jakarta.persistence.EntityManager;
 
@@ -17,10 +17,10 @@ public class ImplDisponibilityRepository implements DisponibilityRepository {
     }
 
     @Override
-    public void save(Disponiblity disponiblity) {
+    public void save(Disponibility disponibility) {
         em.getTransaction().begin();
         try {
-            em.persist(disponiblity);
+            em.persist(disponibility);
             em.getTransaction().commit();
         }catch (Exception e){
             em.getTransaction().rollback();
@@ -28,29 +28,41 @@ public class ImplDisponibilityRepository implements DisponibilityRepository {
     }
 
     @Override
-    public Optional<Disponiblity> findById(int id) {
-        Optional<Disponiblity> disponibilie = Optional.ofNullable(em.find(Disponiblity.class,id));
-        return disponibilie;
+    public Optional<Disponibility> findById(int id) {
+        Optional<Disponibility> disponibility = Optional.ofNullable(em.find(Disponibility.class,id));
+        return disponibility;
     }
 
     @Override
-    public List<Disponiblity> findAll() {
-
-        return List.of();
+    public List<Disponibility> findAll() {
+          return em.createQuery("SELECT d from Disponibility d", Disponibility.class).getResultList();
     }
 
     @Override
-    public List<Disponiblity> findByDoctorId(UUID doctorId) {
-        return List.of();
+    public List<Disponibility> findByDoctorId(UUID doctorId) {
+            return em.createQuery("SELECT d FROM Disponibility d WHERE d.doctor.id = :doctorId", Disponibility.class)
+                    .setParameter("doctorId", doctorId).getResultList();
     }
 
     @Override
-    public void update(Disponiblity disponiblity) {
-
+    public void update(Disponibility disponibility) {
+        em.getTransaction().begin();
+        try {
+            em.merge(disponibility);
+            em.getTransaction().commit();
+        }catch (Exception e){
+            em.getTransaction().rollback();
+        }
     }
 
     @Override
-    public void delete(Disponiblity disponiblity) {
-
+    public void delete(Disponibility disponibility) {
+        em.getTransaction().begin();
+        try {
+            em.remove(disponibility);
+            em.getTransaction().commit();
+        }catch (Exception e){
+            em.getTransaction().rollback();
+        }
     }
 }

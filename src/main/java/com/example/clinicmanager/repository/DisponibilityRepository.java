@@ -1,6 +1,6 @@
 package com.example.clinicmanager.repository;
 
-import com.example.clinicmanager.model.Disponiblity;
+import com.example.clinicmanager.model.Disponibility;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,15 +8,15 @@ import java.util.UUID;
 
 public interface DisponibilityRepository {
 
-    void save(Disponiblity disponiblity);
+    void save(Disponibility disponibility);
 
-    Optional<Disponiblity> findById(int id);
+    Optional<Disponibility> findById(int id);
 
-    List<Disponiblity> findAll();
+    List<Disponibility> findAll();
 
-    List<Disponiblity> findByDoctorId(UUID doctorId);
+    List<Disponibility> findByDoctorId(UUID doctorId);
 
-    void update(Disponiblity disponiblity);
+    void update(Disponibility disponibility);
 
-    void delete(Disponiblity disponiblity);
+    void delete(Disponibility disponibility);
 }
